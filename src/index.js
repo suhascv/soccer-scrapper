@@ -10,8 +10,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
-
 //create a server object:
 
 app.get('/', (req, res) => {
