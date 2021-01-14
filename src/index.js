@@ -3,6 +3,11 @@ const app = express();
 
 var puppeteer = require("puppeteer");
 var cheerio = require("cheerio");
+var path = require('path')
+
+
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 async function ssr(url) {
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox']});
@@ -65,9 +70,13 @@ async function extract(league) {
 
 //create a server object:
 
-app.get("/", async function (req, res) {
+app.get('/', (req, res) => {
+  res.sendFile('./index.html', { root: __dirname });
+});
+
+app.get("/standings/:league", async function (req, res) {
   try{
-  const html = await extract("premier-league");
+  const html = await extract(req.params["league"]);
   res.send(html);
   }
   catch(e){

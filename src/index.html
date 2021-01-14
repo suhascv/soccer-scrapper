@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+          SuhasCv
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Nanum+Gothic&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+    </head>
+    <body >
+
+<div class="navbar">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Nanum+Gothic&family=Sora:wght@500&display=swap');
+
+body{
+ background-color:#222444; 
+ margin:0; 
+ overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    position:fixed;
+    background-color:#222444;
+    color:white;
+    z-index:99;
+}
+
+.navbar a{
+  padding:20px 30px;
+  font-size:40px;
+  color:#ca3b4c;
+  text-decoration:none;
+}
+
+.navbar a:hover{
+  background-color:#225544;
+  color:whitesmoke;
+}
+
+.navbar a:active{
+  background-color:#ca3b4c;
+}
+.container{
+    width:100vw;
+    height:auto;
+    padding:0;
+    margin:0;
+    overflow-y:hidden;  
+}
+
+
+.about{
+  padding:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background-image:linear-gradient(0deg,#335566 25%,#446677);
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  overflow-x: hidden;
+}
+
+
+.intro{
+  display: flex;
+  overflow-x: hidden;
+}
+
+.intro ul{
+    text-align: left;
+    
+    font-size: 40px;
+}
+.intro li {
+    
+    color:aliceblue;
+    list-style: none;
+    margin-bottom: 20px;   
+    border-bottom: solid #ca3b4c 2px;
+    
+}
+.intro li a{
+    color:aliceblue;  
+    text-decoration: underline;  
+}
+.intro li a:hover{
+    text-decoration: none;
+    color:#ca3b4c;
+    transform: scale(1.1);   
+}
+.intro li code{
+    font-size: 20px;
+    border: #ca3b4c 2px;
+}
+
+.title{
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Sora', sans-serif;
+  margin:0;
+  padding-bottom:0;
+  font-size:60px;
+  color:#0b0e44;
+}
+
+.tag a{
+  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nanum Gothic', sans-serif;
+ font-family: 'Sora', sans-serif;
+  font-weight:100;
+  margin-top:0;
+  font-size:25px;
+  color:#ca3b4c;
+  font-style:italic;
+}
+
+
+
+
+
+
+
+
+@media(min-width:300px) and (max-width: 576px) {
+    .navbar{
+        width:100vw;
+        justify-content:space-evenly;
+        align-items: center;
+        padding:0;
+        margin:0;
+      }
+      .navbar a{
+          margin:0;
+          padding-left:0;
+          padding-right:2px;
+      }
+
+      .navbar a:hover{
+          background-color: #222444;
+          border-bottom: 2px white solid;
+      }
+      .container{
+          padding:0;
+      }
+      .about{
+        align-items:top;
+        background-image:linear-gradient(0deg,#335566 25%,#446677);
+        justify-content:center;
+      }
+      .title{
+          margin-top:100px;
+          font-size: 40px;
+          
+      }
+      .intro ul{
+              margin:0;
+          padding:0;
+          text-align: left;
+      }
+      .intro li{
+          font-size: 30px;
+          text-align: left;
+      }
+      .intro li{
+          border-bottom:solid #ca3b4c 1px;
+      }
+     
+
+  }
+
+  ::-webkit-scrollbar {
+    height: 4px;  
+    background-color:#222444;
+    /* height of horizontal scrollbar ← You're missing this */
+    width: 4px;               /* width of vertical scrollbar */
+    border: 1px solid #222444;
+  }
+
+
+    </style>
+            <a href="">Soccer Scrapper API</a>
+</div>
+<div class="container">
+    
+        <div id="About_Me" class="about">
+            <div class="title">Live standings of top 5 European Leagues</div>
+            <div class="intro">
+                <ul>
+             <li>
+                <a href="https://soccer-scrapper.herokuapp.com/standings/premier-league">England : Premier League</a>
+                <code><br>   /standings/premier-league</code>     
+             </li>
+             <li>
+                 <a href="https://soccer-scrapper.herokuapp.com/standings/la-liga">Spain   : La-Liga</a>
+                 <code> <br>      /standings/la-liga</code> 
+             </li>
+             <li>
+                <a href="https://soccer-scrapper.herokuapp.com/standings/serie-a">Italy   : Serie-A</a>
+                <code><br> /standings/serie-a</code> 
+            </li>
+            <li>
+                <a href="https://soccer-scrapper.herokuapp.com/standings/bundesliga">Germany : Bundesliga</a>
+                <code><br> /standings/bundesliga</code> 
+            </li>
+            <li>
+                <a href="https://soccer-scrapper.herokuapp.com/standings/ligue-1">France  : Ligue-1</a>
+                <code><br> /standings/ligue-1</code> 
+            </li>
+            
+            </ul>
+            </div>
+          
+          <div class="tag" ><a href="https://suhascv.netlify.app">by suhascv</a></div>
+        </div>    
+ 
+    </body>
+
+</html>
