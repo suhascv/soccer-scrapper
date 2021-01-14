@@ -66,8 +66,12 @@ async function extract(league) {
 //create a server object:
 
 app.get("/", async function (req, res) {
+  try{
   const html = await extract("premier-league");
   res.send(html);
+  }
+  catch(e){
+  }
 });
 
 app.get("/hello",(req,res)=>{
