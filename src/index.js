@@ -70,6 +70,10 @@ app.get("/", async function (req, res) {
   res.send(html);
 });
 
+app.get("/hello",(req,res)=>{
+  res.send("hello");
+});
+
 app.listen(8080, () => {
   console.log("app is listening on port 8080.");
 });
