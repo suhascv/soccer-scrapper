@@ -1,6 +1,6 @@
 # soccer-scrapper
 ## live data of top 5 european leagues
-## Live App : ```https://soccer-scrapper.herokuapp.com```
+## Live App : [https://soccer-scrapper.herokuapp.com](https://soccer-scrapper.herokuapp.com)
 ### end points
 #### Premier League : ```/standings/premier-league```
 #### La Liga        : ```/standings/la-liga```
