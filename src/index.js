@@ -1,72 +1,16 @@
 var express = require("express");
 const app = express();
-
-var puppeteer = require("puppeteer");
-var cheerio = require("cheerio");
 var path = require('path')
+var standings = require('./standings.js');
+var RESP = {'serie-a':null,'premier-league':null,'la-liga':null,'ligue-1':null,'bundesliga':null}
 
 
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-async function ssr(url) {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox']});
-  const page = await browser.newPage();
-  await page.goto(url, { waitUntil: "networkidle0" });
-  const html = await page.content(); // serialized HTML of page DOM.
-  await browser.close();
-  return html;
-}
 
-async function extract(league) {
-  const URL = {
-    "premier-league":"https://www.scorebat.com/england-premier-league-live-scores/",
-    "serie-a": "https://www.scorebat.com/italy-serie-a-live-scores/",
-    "la-liga": "https://www.scorebat.com/spain-la-liga-live-scores/",
-    "ligue-1": "https://www.scorebat.com/france-ligue-1-live-scores/",
-    bundesliga: "https://www.scorebat.com/germany-bundesliga-live-scores/"
-  };
 
-  if (league in URL) {
-    const executedJS = await ssr(URL[league]);
-    const html = cheerio.load(executedJS);
-    const standings = {};
 
-    html(".StandingsRowColTeam").each((index, element) => {
-      standings[index] = { pos: index + 1, team: element.firstChild.data };
-    });
-
-    html(".StandingsRowCol30").each((index, element) => {
-      let j = 0;
-      if ((index + 1) % 3 === 0) {
-        standings[j]["matches"] = element.firstChild.data;
-        j++;
-      }
-    });
-
-    html(".StandingsRowColPnt").each((index, element) => {
-      standings[index]["points"] = element.firstChild.firstChild.data;
-    });
-
-    html(".StandingsRowStatW").each((index, element) => {
-      standings[index]["won"] = element.firstChild.data;
-    });
-
-    html(".StandingsRowStatD").each((index, element) => {
-      standings[index]["drew"] = element.firstChild.data;
-    });
-
-    html(".StandingsRowStatL").each((index, element) => {
-      standings[index]["lost"] = element.firstChild.data;
-    });
-    let resp = [];
-    for (let s in standings) {
-      resp.push(standings[s]);
-    }
-    return resp;
-  }
-  return { message: "league not found/ misspelled the leagues" };
-}
 
 //create a server object:
 
@@ -76,10 +20,12 @@ app.get('/', (req, res) => {
 
 app.get("/standings/:league", async function (req, res) {
   try{
-  const html = await extract(req.params["league"]);
-  res.send(html);
+    
+  //const html = await standings(req.params["league"]);
+  res.send(RESP[req.params["league"]]);
   }
   catch(e){
+    console.log(e);
   }
 });
 
@@ -88,6 +34,16 @@ app.get("/hello",(req,res)=>{
 });
 
 app.listen(process.env.PORT || 3000, () => {
+
   console.log("app is listening on port 3000.");
+
+  setInterval(async function(){
+    RESP['serie-a']        = await standings('serie-a');
+    RESP['la-liga']        = await standings('la-liga');
+    RESP['bundesliga']     = await standings('bundesliga');
+    RESP['premier-league'] = await standings('premier-league');
+    RESP['ligue-1']        = await standings('ligue-1');
+    },2*1000*60);
+
 });
 //the server object listens on port 8080
