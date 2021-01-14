@@ -74,7 +74,7 @@ app.get("/hello",(req,res)=>{
   res.send("hello");
 });
 
-app.listen(8080, () => {
-  console.log("app is listening on port 8080.");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("app is listening on port 3000.");
 });
 //the server object listens on port 8080
