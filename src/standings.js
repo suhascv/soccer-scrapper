@@ -11,7 +11,7 @@ async function ssr(url) {
   }
   
   async function extract(league) {
-      console.log('here');
+      //console.log('here');
     const URL = {
       "premier-league":"https://www.scorebat.com/england-premier-league-live-scores/",
       "serie-a": "https://www.scorebat.com/italy-serie-a-live-scores/",

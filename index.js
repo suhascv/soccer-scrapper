@@ -1,7 +1,7 @@
 var express = require("express");
 const app = express();
 var path = require('path')
-var standings = require('./standings.js');
+var standings = require('./src/standings.js');
 var RESP = {'serie-a':null,'premier-league':null,'la-liga':null,'ligue-1':null,'bundesliga':null}
 
 
@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //create a server object:
 
 app.get('/', (req, res) => {
-  res.sendFile('./index.html', { root: __dirname });
+  res.sendFile('./views/index.html', { root: __dirname });
 });
 
 app.get("/standings/:league", async function (req, res) {
