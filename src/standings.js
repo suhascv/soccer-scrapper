@@ -21,6 +21,9 @@ async function ssr(url) {
     };
   
     if (league in URL) {
+
+
+
       const executedJS = await ssr(URL[league]);
       const html = cheerio.load(executedJS);
       const standings = {};

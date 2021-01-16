@@ -1,10 +1,13 @@
 var express = require("express");
 const app = express();
-var path = require('path')
+var path = require('path');
+var cors = require('cors');
 var standings = require('./src/standings.js');
 var RESP = {'serie-a':null,'premier-league':null,'la-liga':null,'ligue-1':null,'bundesliga':null}
 
 
+
+app.use(cors())
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,7 +44,7 @@ app.listen(process.env.PORT || 3000, () => {
     RESP['bundesliga']     = await standings('bundesliga');
     RESP['premier-league'] = await standings('premier-league');
     RESP['ligue-1']        = await standings('ligue-1');
-    },2*1000*60);
+    },1*1000*60);
 
 });
 //the server object listens on port 8080
